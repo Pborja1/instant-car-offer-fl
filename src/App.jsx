@@ -47,38 +47,25 @@ export default function InstantCarOfferFL() {
   const [submitted, setSubmitted] = useState(false);
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const form = event.currentTarget;
     const data = new FormData(form);
-    const entries = Object.fromEntries(data.entries());
 
-    const subject = encodeURIComponent(
-      `Vehicle Offer Request: ${entries.year || ""} ${entries.make || ""} ${entries.model || ""}`.trim()
-    );
+    try {
+      await fetch("https://formspree.io/f/xlgzngqg", {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-    const body = encodeURIComponent(`New vehicle acquisition lead from InstantCarOfferFL.com
-
-Name: ${entries.name || ""}
-Phone: ${entries.phone || ""}
-Email: ${entries.email || ""}
-
-Vehicle: ${entries.year || ""} ${entries.make || ""} ${entries.model || ""}
-Mileage: ${entries.mileage || ""}
-VIN: ${entries.vin || ""}
-Payoff / Lien: ${entries.payoff || ""}
-Condition: ${entries.condition || ""}
-Timeline: ${entries.timeline || ""}
-Location: ${entries.location || ""}
-
-Notes:
-${entries.notes || ""}`);
-
-    setSubmitted(true);
-
-    if (typeof window !== "undefined") {
-      window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+      setSubmitted(true);
+      form.reset();
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
     }
   };
 
@@ -328,7 +315,7 @@ function LeadForm({ onSubmit, submitted, compact = false }) {
     <form onSubmit={onSubmit} className={compact ? "space-y-4 p-6" : "space-y-5 p-6 sm:p-8"}>
       {submitted && (
         <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-bold text-emerald-800">
-          Your email app should open with the completed lead details. Send it to submit the request.
+          Thank you. Your vehicle information has been submitted successfully. We will contact you shortly.
         </div>
       )}
 
@@ -437,4 +424,3 @@ function LeadForm({ onSubmit, submitted, compact = false }) {
     </form>
   );
 }
-
