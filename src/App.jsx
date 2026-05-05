@@ -2,7 +2,6 @@ import React, { useMemo, useState } from "react";
 
 const PHONE_DISPLAY = "727-598-0228";
 const PHONE_LINK = "tel:+17275980228";
-const SMS_LINK = "sms:+17275980228";
 const EMAIL = "offers@instantcarofferfl.com";
 
 function Button({ children, href, type = "button", variant = "primary", size = "md", className = "", onClick }) {
@@ -136,7 +135,7 @@ export default function InstantCarOfferFL() {
               ))}
               <div className="grid grid-cols-2 gap-3 pt-2">
                 <Button href={PHONE_LINK} variant="outline">Call</Button>
-                <Button href={SMS_LINK}>Text</Button>
+                
               </div>
             </div>
           </div>
@@ -163,7 +162,7 @@ export default function InstantCarOfferFL() {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button href="#offer" size="lg">Get My Offer</Button>
-                <Button href={SMS_LINK} size="lg" variant="outline">Text Us</Button>
+                
               </div>
 
               <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
@@ -290,7 +289,7 @@ export default function InstantCarOfferFL() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Button href={PHONE_LINK} variant="outline">{PHONE_DISPLAY}</Button>
-            <Button href={SMS_LINK}>Text Us</Button>
+            
           </div>
         </div>
       </footer>
