@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.instantcarofferfl.com/sitemap.xml
+Sitemap: https://instantcarofferfl.com/sitemap.xml
