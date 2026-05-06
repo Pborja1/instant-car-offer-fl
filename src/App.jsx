@@ -311,7 +311,7 @@ function LeadForm({ onSubmit, submitted, compact = false }) {
   const labelClass = "mb-2 block text-sm font-black text-slate-800";
 
   return (
-    <form onSubmit={onSubmit} encType="multipart/form-data" className={compact ? "space-y-4 p-6" : "space-y-5 p-6 sm:p-8"}>
+    <form onSubmit={onSubmit} className={compact ? "space-y-4 p-6" : "space-y-5 p-6 sm:p-8"}>
       {submitted && (
         <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-bold text-emerald-800">
           Thank you. Your vehicle information has been submitted successfully. We will contact you shortly.
@@ -383,17 +383,14 @@ function LeadForm({ onSubmit, submitted, compact = false }) {
       </div>
 
       <div>
-        <label className={labelClass}>Upload Vehicle Photos</label>
-        <input
-          name="vehicle_photos"
-          type="file"
-          accept="image/*"
-          multiple
-          className="w-full rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-4 text-sm font-semibold text-slate-700 file:mr-4 file:rounded-full file:border-0 file:bg-emerald-400 file:px-4 file:py-2 file:font-black file:text-slate-950 hover:file:bg-emerald-300"
-        />
-        <p className="mt-2 text-xs font-semibold text-slate-500">
-          Upload front, back, sides, interior, odometer, VIN sticker, and any damage photos.
-        </p>
+        <label className={labelClass}>When are you looking to sell it to us?</label>
+        <select name="sell_timeline" className={inputClass} defaultValue="">
+          <option value="" disabled>Select one</option>
+          <option value="Today">Today</option>
+          <option value="Within 7 days">Within 7 days</option>
+          <option value="Within 30 days">Within 30 days</option>
+          <option value="Just checking value for now">Just checking value for now</option>
+        </select>
       </div>
 
       {!compact && (
