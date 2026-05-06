@@ -360,6 +360,28 @@ function LeadForm({ onSubmit, submitted, compact = false }) {
         </div>
       </div>
 
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className={labelClass}>Payoff Amount</label>
+          <input name="payoff_amount" className={inputClass} placeholder="$18,500" />
+        </div>
+        <div>
+          <label className={labelClass}>Lender / Bank</label>
+          <input name="lender" className={inputClass} placeholder="Chase, Capital One, etc." />
+        </div>
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className={labelClass}>Monthly Payment</label>
+          <input name="monthly_payment" className={inputClass} placeholder="$450" />
+        </div>
+        <div>
+          <label className={labelClass}>Loan Term</label>
+          <input name="term" className={inputClass} placeholder="60 months" />
+        </div>
+      </div>
+
       {!compact && (
         <>
           <div className="grid gap-4 sm:grid-cols-2">
