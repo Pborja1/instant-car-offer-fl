@@ -313,8 +313,15 @@ function LeadForm({ onSubmit, submitted, compact = false }) {
   return (
     <form onSubmit={onSubmit} className={compact ? "space-y-4 p-6" : "space-y-5 p-6 sm:p-8"}>
       {submitted && (
-        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-bold text-emerald-800">
-          Thank you. Your vehicle information has been submitted successfully. We will contact you shortly.
+        <div className="rounded-3xl border-2 border-emerald-300 bg-emerald-500 p-6 text-center shadow-xl">
+          <div className="mb-3 text-5xl">✅</div>
+          <h3 className="text-2xl font-black text-white">Thank You!</h3>
+          <p className="mt-2 text-base font-bold text-emerald-50">
+            Your vehicle information has been submitted successfully.
+          </p>
+          <p className="mt-1 text-sm font-semibold text-emerald-100">
+            One of our acquisition specialists will contact you shortly.
+          </p>
         </div>
       )}
 
@@ -390,6 +397,16 @@ function LeadForm({ onSubmit, submitted, compact = false }) {
           <option value="Within 7 days">Within 7 days</option>
           <option value="Within 30 days">Within 30 days</option>
           <option value="Just checking value for now">Just checking value for now</option>
+        </select>
+      </div>
+
+      <div>
+        <label className={labelClass}>Are you the registered owner of the vehicle?</label>
+        <select name="registered_owner" className={inputClass} defaultValue="" required>
+          <option value="" disabled>Select one</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Co-owner">Co-owner</option>
         </select>
       </div>
 
